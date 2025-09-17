@@ -91,7 +91,8 @@ export default function List({
         <button
           className="btn btn-danger"
           value="deleteCompleted"
-          onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            const value = event.currentTarget.value;
             Swal.fire({
               title: "Are you sure?",
               text: "You won't be able to revert this!",
@@ -102,22 +103,23 @@ export default function List({
               confirmButtonText: "Yes, delete it!",
             }).then((result) => {
               if (result.isConfirmed) {
-                deleteChoice(event.currentTarget.value);
+                deleteChoice(value);
                 Swal.fire({
                   title: "Deleted!",
                   text: "Your file has been deleted.",
                   icon: "success",
                 });
               }
-            })
-          }
+            });
+          }}
         >
           Xoá công việc hoàn thành
         </button>
         <button
           className="btn btn-danger"
           value="deleteAll"
-          onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            const value = event.currentTarget.value;
             Swal.fire({
               title: "Are you sure?",
               text: "You won't be able to revert this!",
@@ -128,15 +130,15 @@ export default function List({
               confirmButtonText: "Yes, delete it!",
             }).then((result) => {
               if (result.isConfirmed) {
-                deleteChoice(event.currentTarget.value);
+                deleteChoice(value);
                 Swal.fire({
                   title: "Deleted!",
                   text: "Your file has been deleted.",
                   icon: "success",
                 });
               }
-            })
-          }
+            });
+          }}
         >
           Xoá tất cả công việc
         </button>
